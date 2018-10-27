@@ -38,12 +38,6 @@ util包 存放工具相关代码
         因碎片中自定义标题栏，不需原生ActionBar，即修改res/values/styles.xml中代码
         在AndroidManifest.xml中声明访问网络的权限
 
-第三阶段：显示天气信息
-   
-    查询天气信息，并显示出来。因和风天气返回的JSON数据结构复杂，用JSONObject解析很麻烦，即此处用GSON对天气信息进行解析
-    
-    1.定义GSON实体类：
-        在gson包中，创建6个实体类对象，分解和风天气返回的数据
 
 
 

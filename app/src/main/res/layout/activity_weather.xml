@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--将5个布局文件引入到activity_weather.xml
+    最外层布局FrameLayout，并将背景色设置成colorPrimary。再嵌套一个SctollView ：滚动方式查看屏幕外内容
+    SctollView内部只允许存在一个直接子布局，即在其中嵌套一个垂直方向的LinearLayout将其他布局引入
+-->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <ScrollView
+        android:id="@+id/weather_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/title"/>
+
+            <include layout="@layout/now"/>
+
+            <include layout="@layout/forecast"/>
+
+            <include layout="@layout/aqi"/>
+
+            <include layout="@layout/suggestion"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>
