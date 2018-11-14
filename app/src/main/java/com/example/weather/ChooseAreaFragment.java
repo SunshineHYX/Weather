@@ -1,6 +1,7 @@
 package com.example.weather;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import com.example.weather.db.County;
 import com.example.weather.db.Province;
 import com.example.weather.util.HttpUtil;
 import com.example.weather.util.Utility;
+import com.example.weather.util.WeatherActivity;
 
 import org.litepal.crud.DataSupport;
 
@@ -106,6 +108,13 @@ public class ChooseAreaFragment extends Fragment {
                 }else if(currentLevel == LEVEL_CITY){
                     selectedCity = cityList.get(position);
                     queryCounties();
+                //该else if的作用：从省市县列表跳转到天气列表中
+                }else if(currentLevel == LEVEL_COUNTY){
+                    String weatherId = countyList.get(position).getWeatherId();
+                    Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                    intent.putExtra("weather_id",weatherId);
+                    startActivity(intent);
+                    getActivity().finish();
                 }
             }
         });

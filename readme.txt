@@ -39,8 +39,29 @@ util包 存放工具相关代码
         在AndroidManifest.xml中声明访问网络的权限
 
 
+第三阶段：显示天气信息
 
+        目的：开始去查询天气，并将天气显示出来
+        方案：因和风天气返回的JSON数据结构很复杂，使用JSONObject解析会比较麻烦，此处借助GSON来对天气信息来进行解析。
 
+    1.定义GSON实体类
+      因返回数据大致格式：
+      {“HeWeather”：[{
+            “status”：“ok”，
+            “basic”：{}，
+            “aqi”：{}，
+            “now”：{},
+             “suggestion”：{}，
+            “daily_forcast”:[]
+      }]},
+      除Status外的5个部分定义成5个实体类，使用@SerializedName注解的方式让JSON字段和Java字段之间建立映射关系
+
+    2.编写天气界面
+      在res/layout文件夹创建6个与GSON相应的布局文件
+
+   
+    3.将天气显示到界面上
+      1.在Utility类中添加一个用于解析天气JSON数据的方法
 
 
 
